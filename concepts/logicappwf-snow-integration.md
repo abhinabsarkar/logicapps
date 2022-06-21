@@ -56,14 +56,14 @@ Logic Apps has built-in connectors for Microsoft Defender for Cloud to capture t
 ### Test the creation of ServiceNow records for Defender Alerts
 1. Open Defender for Cloud in Azure portal. In the Resource Menu on the left pane, click on Security Alerts. In the command bar, click on Sample Alerts. Click on Create Sample Alerts. This will create a bunch of sample alerts in the Defender for Cloud. 
 
-2. Once the sample alerts are created, click on any alert. This will open a sidebar, click on Take action --> expand Trigger Automated response --> Trigger Logic App. Another sidebar will open listing the logic app(s), select the one which has been configured previously for Alerts --> click on Trigger. This will trigger the logic app & create an incident in ServiceNow using the sample alert.
+2. Once the sample alerts are created, click on any alert. This will open a sidebar, click on Take action --> expand Trigger Automated response --> Trigger Logic App. Another sidebar will open listing the logic app(s), select the one which has been configured previously for Alerts i.e. lapp-demo-alert --> click on Trigger. This will trigger the logic app & create an incident in ServiceNow using the sample alert.
 
     ![Alt txt](/images/servicenow-alert-incident.png)
 
 ### Test the creation of ServiceNow records for Defender Recommendation
 1. Open Defender for Cloud in Azure portal. In the Resource Menu on the left pane, click on Recommendations. In the Recommendations pane, click on any recommendation which is marked unassigned.
 
-2. Select the unassigned recommendation --> click on Logic App. A sidebar will open listing the logic app(s), select the one which has been configured previously for Recommendations --> click on Trigger. This will trigger the logic app & create an incident in ServiceNow for the Recommendation.
+2. Select the unassigned recommendation --> click on Logic App. A sidebar will open listing the logic app(s), select the one which has been configured previously for Recommendations i.e. lapp-demo --> click on Trigger. This will trigger the logic app & create an incident in ServiceNow for the Recommendation.
 
     ![Alt txt](/images/servicenow-recommendation-incident.png)
 
