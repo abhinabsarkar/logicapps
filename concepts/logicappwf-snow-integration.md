@@ -18,7 +18,7 @@ Logic Apps has built-in connectors for Microsoft Defender for Cloud to capture t
 
     ![Alt txt](/images/logic-app-consumption.png)
 
-    > *The Logic App has to be created as **Consumption** plan type or else the Logic App is not recognized by the **Workflow Automation** in Defender*
+    > *The Logic App has to be created as **Consumption** plan type or else the Logic App is not recognized by the **Workflow Automation** in Defender* which will be done after the step # 4.
 
 2. In the Logic App designer, add a trigger for Microsoft Defender for Cloud Alert or Recommendation or Compliance. If you need all, create Logic Apps for each one of them.
 
@@ -30,20 +30,26 @@ Logic Apps has built-in connectors for Microsoft Defender for Cloud to capture t
 
 4. Pass the values from the Defender from Cloud trigger to populate the Service-Now record based on your organization's requirements. Two of the triggers: Recommendation & Alert are shown below:
 
-    ### a. Create record (Incident) in Service-Now based on the Alerts in Defender for Cloud
+    > Note that two different Logic Apps are created for the different triggers in this article.
+
+    ### a. Logic App 1 - lapp-demo-alert: Create record (Incident) in Service-Now based on the Alerts in Defender for Cloud
 
     ![Alt txt](/images/defender-alert-servicenow.png)
 
-    ### b. Create record (Incident) in Service-Now based on the Recommendations in Defender for Cloud
+    ### b. Logic App 2 - lapp-demo: Create record (Incident) in Service-Now based on the Recommendations in Defender for Cloud
 
     ![Alt txt](/images/defender-recommendation-servicenow.png)
 
 ## Steps to filter Logic App triggers via Defender for Cloud using Workflow Automation
 1. Search for Defender for Cloud in Azure portal & click on it. In the resource menu, on the left pane, click on Workflow automation under Management. Click on Add Workflow automation.
 
-    > Workflow automation allows to filter on the trigger conditions for which the Alerts will be fired through the Logic App. For instance, when Alert Severity is set to "Medium, High", only those alerts will be triggered which are marked as Medium or High in Defender.
+2. Workflow automation allows to filter on the trigger conditions for which the Alerts will be fired through the Logic App. For instance, when Alert Severity is set to "Medium, High", only those alerts will be triggered which are marked as Medium or High in Defender.
 
     ![Alt txt](/images/defender-workflow-automation.png)
+
+3. Workflow automation for the Trigger type Recommendation can be configured as shown below.
+
+    ![Alt txt](/images/defender-workflow-automation-recommendation.png)
 
 ## Test the Defender integration with ServiceNow
 
