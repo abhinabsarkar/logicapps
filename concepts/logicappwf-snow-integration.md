@@ -1,4 +1,4 @@
-# Logic Apps - ServiceNow integration with Azure Defender for Cloud
+# Logic Apps - ServiceNow integration with Microsoft Defender for Cloud
 
 ## Pre-requisites
 * [Azure subscription access](https://azure.microsoft.com/en-us/)
