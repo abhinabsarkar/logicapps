@@ -1,0 +1,69 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "HTTP_-_Get_file_content": {
+                "inputs": {
+                    "method": "GET",
+                    "uri": "@triggerBody()?['filename']"
+                },
+                "runAfter": {},
+                "type": "Http"
+            },
+            "HTTP_-_Invoke_the_Azure_ML_endpoint_": {
+                "inputs": {
+                    "body": "@body('HTTP_-_Get_file_content')",
+                    "headers": {
+                        "Authorization": "Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                        "Content-Type": "application/json",
+                        "azureml-model-deployment": "default"
+                    },
+                    "method": "POST",
+                    "uri": "https://xxxxxxxxxxxxxxxxxxxxxxxxx"
+                },
+                "runAfter": {
+                    "HTTP_-_Get_file_content": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Http"
+            },
+            "Response": {
+                "inputs": {
+                    "body": "@body('HTTP_-_Invoke_the_Azure_ML_endpoint_')",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "statusCode": 200
+                },
+                "kind": "http",
+                "runAfter": {
+                    "HTTP_-_Invoke_the_Azure_ML_endpoint_": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Response"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "method": "POST",
+                    "schema": {
+                        "properties": {
+                            "filename": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "kind": "Stateful"
+}
