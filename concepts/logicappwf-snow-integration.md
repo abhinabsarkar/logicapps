@@ -9,9 +9,16 @@
     * [Service-Now](https://www.servicenow.com/products-by-category.html)
 
 ## Automate responding to alerts in Cloud by creating records in ServiceNow
-Microsoft Defender for Cloud - includes AWS, GCP (formerly known as Azure Security Center) provides recommendations to protect workloads from known security risks & generates alerts to defend workloads in real-time.
+Microsoft Defender for Cloud - includes AWS, GCP (formerly known as Azure Security Center) provides recommendations to protect workloads from known security risks, generates alerts to defend workloads in real-time & regulatory compliance.
 
-Logic Apps has built-in connectors for Microsoft Defender for Cloud to capture the recommendations & alerts. It can also create records (Incidents) in Service-Now based on the recommendations & alerts.
+Logic Apps has built-in connectors for Microsoft Defender for Cloud to capture 
+* Recommendations
+* Alerts
+* Regulatory Compliance 
+
+It can also manage records (Incidents) in Service-Now based on the recommendations & alerts.
+
+![Alt txt](/images/integration-diagram.png)
 
 ## Steps to create the Logic App
 1. Search for Logic Apps in Azure Portal. In the Logic Apps Designer, select the Blank Logic App template. Create a Logic App with Consumption Plan type.
