@@ -73,6 +73,26 @@ It can also manage records (Incidents) in Service-Now based on the recommendatio
 2. Select the unassigned recommendation --> click on Logic App. A sidebar will open listing the logic app(s), select the one which has been configured previously for Recommendations i.e. lapp-demo --> click on Trigger. This will trigger the logic app & create an incident in ServiceNow for the Recommendation.
 
     ![Alt txt](/images/servicenow-recommendation-incident.png)
+    
+# Configure Logic App workflow for MDFC to automate all subscriptions
+The Logic App workflow automation for Microsoft Defender for Cloud (MDFC) can be configured for all subscriptions within a tenant using Azure policies. To use centralized management, assign the policy [Deploy Workflow Automation for Microsoft Defender for Cloud alerts](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e) to a Management Group containing the subscriptions that will use the workflow automation configuration. Refer: https://docs.microsoft.com/en-us/azure/defender-for-cloud/workflow-automation#configure-workflow-automation-at-scale-using-the-supplied-policies
+
+## Steps to configure:
+1.	Elevate access to manage all Azure Subscriptions - https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin
+2.	The automation uses User Assigned Managed Identity to be able to query the Root management group. Please follow the below step by step instructions:
+3.	Create User Assigned Managed Identity. Follow the instructions listed in the doc to [create user-assigned managed identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp#create-a-user-assigned-managed-identity) 
+4.	Once User-assigned managed identity is created, make sure to assign Reader Permissions to the Root Management Group. Follow the below mentioned steps:  
+5. Go to the Management groups page.
+6. Click on the details in the ‘Tenant root group’
+7. Press 'Access Control (IAM)' on the navigation bar.
+8. Pess '+Add' and 'Add role assignment'.
+9.	Choose ‘Reader’ role.
+10. Assign access to User assigned managed identity.
+11. Choose the subscription where the logic app was deployed.
+12. Select the name of the User assigned identity.
+13. Press 'Save'. 
+14. Enable and add the above created User assigned Identity to the Logic App. Follow the instructions here to assign the User assigned identity to the Logic App.
+
 
 ## References
 * [Automate responses to Microsoft Defender for Cloud triggers](https://docs.microsoft.com/en-us/azure/defender-for-cloud/workflow-automation)
